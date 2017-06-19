@@ -33,12 +33,11 @@
         <split></split>
         <div class="rating">
           <h1 class="title">商品评价</h1>
-          <ratingselect :selectType="selectType" :onlyContent="onlyContent" :desc="desc" :ratings="food.ratings"></ratingselect>
+          <ratingselect @select="selectRating" @toggle="toggleContent" :selectType="selectType" :onlyContent="onlyContent" :desc="desc" :ratings="food.ratings"></ratingselect>
         </div>
       </div>
     </div>
   </transition>
-  
 </template>
 <script>
 import BScroll from 'better-scroll'
@@ -94,6 +93,13 @@ export default {
       }
       this.$emit('add', event.target)
       Vue.set(this.food, 'count', 1)
+    },
+    selectRating (type) {
+      console.log(type)
+      this.selectType = type
+    },
+    toggleContent () {
+      this.onlyContent = !this.onlyContent
     }
   },
   components: {
@@ -105,7 +111,6 @@ export default {
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/stylus/mixin.styl"
-
   .food
     position: fixed
     left: 0
@@ -123,7 +128,7 @@ export default {
       position: relative
       width: 100%
       height: 0
-      // 不设置高度，但是避免出现下面内容出现下落情况
+      // 不设置高度，但是避免出现下面内容出现,内容下落情况
       padding-top: 100%
       img
         position: absolute

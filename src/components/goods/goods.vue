@@ -42,9 +42,7 @@
     <food @add="addFood" :food="selectedFood" ref="food"></food>
   </div> 
 </template>
-
 <script>
-
 import BScroll from 'better-scroll'
 import shopcart from '../../components/shopcart/shopcart.vue'
 import cartcontrol from '../../components/cartcontrol/cartcontrol.vue'
@@ -266,9 +264,5 @@ export default {
       	  position: absolute
       	  right: 0
       	  bottom: 12px
-      	  
-      	  	  
-      	  	  
-      	  
-   
+      	
 </style>
